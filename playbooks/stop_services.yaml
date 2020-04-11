@@ -13,7 +13,7 @@
       state: stopped
     ignore_errors: true
 
-- name: Stop r1soft on CentOS 6
+    name: Stop r1soft on CentOS 6
     when: (ansible_distribution == "CentOS" and ansible_distribution_major_version == "7")
     systemd:
       name: cdp-agent
