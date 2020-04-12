@@ -1,5 +1,5 @@
 ---
-- name: My First Playbook
+- name: Mariadb
   hosts: 34.255.116.7
   become: true
   become_method: sudo
@@ -8,8 +8,42 @@
     package:
       name: mariadb
       state: installed
-  
-  tasks:
-  - name: Run start command
-    shell: 'systemctl start mariadb'
 
+
+
+
+- name: Install necessary packages
+  package: 
+    name: "{{item}}"
+    state: latest
+  with_items:
+        - wget
+        - unzip
+        - php-gd
+        - httpd
+        - mysql
+        - mariadb-server
+        - php 
+        - php-mysql
+        - php-fpm
+  ignore_errors: true
+  notify: Restart_httpd
+
+- name: Download wordpress package
+  get_url:
+    url: "https://wordpress.org/wordpress-${{wordpress_version}}.tar.gz"
+    dest: /tmp/
+
+- name: Unzip wordpress file
+  unarchive:
+    src: "/tmp/wordpress-{{wordpress_version}}.tar.gz"
+    dest: /var/www/html/
+    remote_src: yes
+  become: yes
+  become_method: sudo
+
+- name: Move files to html folder
+  shell: "mv /var/www/html/wordpress/*  /var/www/html/"
+  become: yes
+  become_method: sudo
+  ignore_errors: yes
