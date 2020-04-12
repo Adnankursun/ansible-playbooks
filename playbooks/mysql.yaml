@@ -27,24 +27,24 @@
 - name: Secures the MySQL root user
   mysql_user: user="root" password="212121" host="{{item}}" login_password="" login_user=root
   with_items:
-        - 127.0.0.1
-        - 34.255.116.7
-        - ::1
-        - ""
-        - name: Removes the MySQL test database
-   mysql_db: db=test state=absent login_password="" login_user=root
+    - 127.0.0.1
+    - 34.255.116.7
+    - ::1
+    - ""
+- name: Removes the MySQL test database
+  mysql_db: db=test state=absent login_password="" login_user=root
 
- - name: Create a new database called wordpress
-   mysql_db:
-   login_user: root
-   login_password: "212121"
-   name: wordpress
-   state: present
+- name: Create a new database called wordpress
+  mysql_db:
+    login_user: root
+    login_password: "212121"
+    name: wordpress
+    state: present
 
- - name: Configure new MySQL user called wpuser
-   mysql_user:
-   login_user: root
-   login_password: "212121"
-   name: wpuser
-   password: adnan
-   priv: 'wordpress.*:ALL'
+- name: Configure new MySQL user called wpuser
+  mysql_user:
+    login_user: root
+    login_password: "212121"
+    name: wpuser
+    password: adnan
+    priv: 'wordpress.*:ALL'
