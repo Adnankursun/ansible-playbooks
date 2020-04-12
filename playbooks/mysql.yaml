@@ -1,5 +1,5 @@
 ---
-  - name: Install MySQL for production ready server
+- name: Install MySQL for production ready server
   user: centos
   hosts: 34.255.116.7
   become: True
