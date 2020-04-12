@@ -1,16 +1,11 @@
 ---
-- name: mariadb
+- name: My First Playbook
   hosts: 34.255.116.7
   become: true
   become_method: sudo
-  user: centos
   tasks:
   - name: Install package
     package:
       name: mariadb
       state: installed
-  tasks:
-    shell: 'start mariadb'
-  
-  tasks:
-    shell: 'enable mariadb'
+
