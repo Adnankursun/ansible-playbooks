@@ -1,0 +1,52 @@
+---
+- name: Task_1
+  hosts: 34.255.116.7  #ireland
+  become: true
+  become_method: sudo
+  tasks:
+  - name: Install package
+    package:
+      name: httpd
+      state: installed
+
+- name: Task_1
+  hosts: 34.255.116.7  #ireland
+  become: true
+  become_method: sudo
+  tasks:
+  - name: Install package
+    package:
+      name: mariadb
+      state: installed
+
+  - name: Task_1
+  hosts: 34.255.116.7  #ireland
+  become: true
+  become_method: sudo
+  tasks:
+  - name: Install package
+    package:
+      name: mysql
+      state: installed
+
+
+  - name: Add Bob
+    user:
+      name: user
+      state: present
+
+  - name: Add Ben
+    user:
+      name: user
+      state: present
+
+
+  - name: Add Lisa
+    user:
+      name: user
+      state: present
+
+  - name: Add Katty
+    user:
+      name: user
+      state: present
