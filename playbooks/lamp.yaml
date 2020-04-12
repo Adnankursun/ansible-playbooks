@@ -1,16 +1,16 @@
 ---
- - name: install LAMP Stack
+- name: install LAMP Stack
   hosts: 34.255.116.7
   remote_user: centos
   become: true
   become_user: root
   gather_facts: true
 
- - name: Include Apache
+- name: Include Apache
   import_playbook: apache.yaml
 
- - name: Include MySQL
+- name: Include MySQL
   import_playbook: mysql.yaml
 
- - name: Include MySQL
+- name: Include MySQL
   import_playbook: wordpress.yaml
