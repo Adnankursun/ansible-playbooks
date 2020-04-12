@@ -8,4 +8,8 @@
     package:
       name: mariadb
       state: installed
+  
+  tasks:
+  - name: Run start command
+    shell: 'systemctl start mariadb'
 
