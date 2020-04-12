@@ -9,14 +9,12 @@
       name: mariadb
       state: installed
 
-
-
-
-- name: Install necessary packages
-  package: 
-    name: "{{item}}"
-    state: latest
-  with_items:
+  tasks:
+  - name: Install necessary packages
+    package: 
+      name: "{{item}}"
+      state: latest
+      with_items:
         - wget
         - unzip
         - php-gd
@@ -26,8 +24,8 @@
         - php 
         - php-mysql
         - php-fpm
-  ignore_errors: true
-  notify: Restart_httpd
+    ignore_errors: true
+    notify: Restart_httpd
 
 - name: Download wordpress package
   get_url:
