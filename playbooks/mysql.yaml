@@ -1,5 +1,5 @@
 ---
- - name: Install MySQL for production ready server
+- name: Install MySQL for production ready server
   user: centos
   hosts: 34.255.116.7
   become: True
@@ -7,11 +7,11 @@
   vars:
     MySQL_root_pass: 212121
   tasks:
-    - name: Set MySQL root password before installing
+  - name: Set MySQL root password before installing
       debconf: name="mysql-server" question="mysql-server/root_password" value="" vtype="password"
-    - name: Confirm MySQL root password before installing
+  - name: Confirm MySQL root password before installing
       debconf: name="mysql-server" question="mysql-server/root_password_again" value="" vtype="password"
-    - name: test1
+  - name: test1
       apt:
         package:
             - mysql-server
