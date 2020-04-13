@@ -5,6 +5,23 @@
   become_method: sudo
   user: centos
   tasks:
+- name: Install necessary packages
+  package: 
+    name: "{{item}}"
+    state: latest
+  with_items:
+        - wget
+        - unzip
+        - php-gd
+        - httpd
+        - mysql
+        - mariadb-server
+        - php 
+        - php-mysql
+        - php-fpm
+  ignore_errors: true
+  notify: Restart_httpd
+
     - name: Install epel-release
       shell: 'sudo yum install http://rpms.remirepo.net/enterprise/remi-release-7.rpm -y'
     - name: config manager enabled
