@@ -29,17 +29,16 @@
       state: stopped
       enabled: false
 
-- name: Get Key
-  when: (ansible_distribution == "CentOS" and ansible_distribution_major_version == "6")
-  shell: "r1soft-setup --get-key http://backup.bugdalorian.com/"
+  - name: Get Key
+    when: (ansible_distribution == "CentOS" and ansible_distribution_major_version == "6")
+    shell: "r1soft-setup --get-key http://backup.bugdalorian.com/"
 
 
 
-
-handlers:
-  name: AGENT_RESTART
-  service:  
-  name: cdp-agent
-      state: restarted
-      enabled: true
+  handlers:
+  -name: AGENT_RESTART
+   service:  
+     name: cdp-agent
+     state: restarted
+     enabled: true
 
