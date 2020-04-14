@@ -55,25 +55,58 @@
 
     - name: Create 1 user bob
       user:
-      name: bob
-      generate_ssh_key: yes
+        name: bob
+        state: present
+    - name: Create a 2048-bit SSH key for user Bob in ~bob/.ssh/id_rsa
+      user: 
+        name: bob  
+        generate_ssh_key: yes
+        ssh_key_bits: 2048
+        ssh_key_file: .ssh/id_rsa
+
     - name: Create 1 user lisa
       user:
-      name: lisa
-      generate_ssh_key: yes
+        name: lisa
+        state: present
+    - name: Create a 2048-bit SSH key for user lisa in ~lisa/.ssh/id_rsa
+      user: 
+        name: lisa  
+        generate_ssh_key: yes
+        ssh_key_bits: 2048
+        ssh_key_file: .ssh/id_rsa
+
+
+     - name: Create 1 user katty
+       user:
+         name: katty
+         state: present
+    - name: Create a 2048-bit SSH key for user katty in ~katty/.ssh/id_rsa
+      user: 
+        name: katty  
+        generate_ssh_key: yes
+        ssh_key_bits: 2048
+        ssh_key_file: .ssh/id_rsa
+
+
+
     - name: Create 1 user ben
       user:
-      name: ben
-      generate_ssh_key: yes
-    - name: Create 1 user katty
-      user:
-      name: katty
-      generate_ssh_key: yes
+        name: ben
+        state: present
+    - name: Create a 2048-bit SSH key for user ben in ~ben/.ssh/id_rsa
+      user: 
+        name: ben 
+        generate_ssh_key: yes
+        ssh_key_bits: 2048
+        ssh_key_file: .ssh/id_rsa
+
+
+
     - name: Route53 a record
       route53:
-      state: “present”
-      zone: “bugdalorian.com”
-      record: “wordpress.bugdalorian.com”
-      type: A
-      ttl: 7200
-      value: “3.11.79.115”
+        state: “present”
+        zone: “bugdalorian.com”
+        record: “wordpress.bugdalorian.com”
+        type: A
+        ttl: 7200
+        value: “3.11.79.115”
