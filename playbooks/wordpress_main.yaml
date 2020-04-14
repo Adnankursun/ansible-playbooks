@@ -53,7 +53,7 @@
       become: yes
       become_method: sudo
 
-    - name: Create 1 user bob
+    - name: Add bob
       user:
         name: bob
         state: present
@@ -64,7 +64,7 @@
         ssh_key_bits: 2048
         ssh_key_file: .ssh/id_rsa
 
-    - name: Create 1 user lisa
+    - name: Add lisa
       user:
         name: lisa
         state: present
@@ -76,7 +76,7 @@
         ssh_key_file: .ssh/id_rsa
 
 
-     - name: Create 1 user katty
+     - name: Add katty
        user:
          name: katty
          state: present
@@ -89,7 +89,7 @@
 
 
 
-    - name: Create 1 user ben
+    - name: Add ben
       user:
         name: ben
         state: present
