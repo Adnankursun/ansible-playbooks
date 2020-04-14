@@ -77,9 +77,9 @@
 
 
     - name: Add katty
-       user:
-         name: katty
-         state: present
+      user:
+        name: katty
+        state: present
     - name: Create a 2048-bit SSH key for user katty in ~katty/.ssh/id_rsa
       user: 
         name: katty  
