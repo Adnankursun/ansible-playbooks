@@ -76,7 +76,7 @@
         ssh_key_file: .ssh/id_rsa
 
 
-     - name: Add katty
+    - name: Add katty
        user:
          name: katty
          state: present
