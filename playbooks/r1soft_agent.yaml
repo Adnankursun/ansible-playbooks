@@ -1,0 +1,41 @@
+---
+- name: R1soft Agent installation
+  hosts: all
+  become: true
+  become_method: sudo
+  user: centos
+  when: (ansible_distribution == "CentOS" and ansible_distribution_major_version == "6")
+  tasks:
+  - name: Create repo
+    copy:
+      src: r1sotf.repo
+      dest: /etc/yum.repos.d/
+
+
+  - name: install agent
+    package: 
+      name: serverbackup-enterprise-agent
+      state: installed
+    notify: AGENT_RESTART
+
+
+
+- name: Stop iptables
+    package: 
+      name: iptables
+      state: stopped
+      enabled: false
+
+- name: Get Key
+  shell: "r1soft-setup --get-key http://backup.bugdalorian.com/"
+
+
+
+
+handlers:
+  name: AGENT_RESTART
+  service:  
+  name: cdp-agent
+      state: restarted
+      enabled: true
+
