@@ -10,6 +10,6 @@
         instance_type: t2.micro
         image: ami-0323c3dd2da7fb37d
         count: 1
-        vpc_subnet_id: subnet-0814e75b49b5ce629
-        region: eu-west-2a
+        vpc_subnet_id: subnet-04941aa978de5b6be
+        region: us-east-1a
         assign_public_ip: yes
