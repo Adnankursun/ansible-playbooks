@@ -6,7 +6,7 @@
   tasks:
     - name: Create ec2 instance
       ec2:
-        key_name: bastion
+        key_name: ansible
         instance_type: t2.micro
         image: ami-0323c3dd2da7fb37d
         count: 1
