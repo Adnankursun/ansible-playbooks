@@ -3,7 +3,9 @@
   hosts: all
   become: true
   become_method: sudo
-  user: ec2-user
+  user: centos
+  ignore_errors: true
+  gather_facts: false
   tasks:
   - name: Setup a repo
     when: (ansible_distribution == "CentOS" and ansible_distribution_major_version == "7")
@@ -13,7 +15,7 @@
   - name: Install ncpa
     when: (ansible_distribution == "CentOS" and ansible_distribution_major_version == "7")
     package: 
-      name: ncpa-2.2.1.el7.x86_64.rpm
+      name: ncpa
       state: present
 
   - name: Change a line
